@@ -2,23 +2,7 @@ FROM python:3.9.10
 COPY . .
 ENV PYTHONUNBUFFERED True
 RUN apt-get update -y && apt-get install -y --no-install-recommends build-essential gcc libsndfile1  && apt-get -y install sudo
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
-USER docker
-
-ENV LC_ALL=C.UTF-8
-ENV LANG=C.UTF-8
-RUN mkdir .streamlit
-RUN chown docker .streamlit
-RUN chmod 0777 .streamlit
-RUN bash -c 'echo -e "\
-[general]\n\
-email = \"\"\n\
-" > /.streamlit/credentials.toml'
-RUN bash -c 'echo -e "\
-[server]\n\
-enableCORS = false\n\
-" > /.streamlit/config.toml'
 EXPOSE 8501
 ENV APP_HOME /app
 WORKDIR $APP_HOME
