@@ -11,4 +11,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 ENTRYPOINT ["streamlit", "run", "app.py", "--server.enableCORS", "false", "--server.enableXsrfProtection", "false"]
-CMD ["app.py"]
+
