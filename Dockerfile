@@ -10,8 +10,9 @@ USER admin
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
-RUN mkdir  /.streamlit
-RUN chown admin /.streamlit
+RUN mkdir streamlit
+RUN chown admin streamlit
+RUN chmod 0777 streamlit
 RUN bash -c 'echo -e "\
 [general]\n\
 email = \"\"\n\
