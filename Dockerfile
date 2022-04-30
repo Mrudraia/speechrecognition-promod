@@ -3,7 +3,7 @@ COPY . .
 ENV PYTHONUNBUFFERED True
 RUN apt-get update -y && apt-get install -y --no-install-recommends build-essential gcc libsndfile1 
 
-EXPOSE 8080
+EXPOSE 8501
 ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY new_requirements.txt ./requirements.txt
