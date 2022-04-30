@@ -1,12 +1,17 @@
 FROM python:3.9.10 
 COPY . .
 ENV PYTHONUNBUFFERED True
-RUN apt-get update -y && apt-get install -y --no-install-recommends build-essential gcc libsndfile1 
+RUN apt-get update -y && apt-get install -y --no-install-recommends build-essential gcc libsndfile1  && apt-get -y install sudo
+RUN adduser --disabled-password --gecos '' admin \
+    && adduser admin  sudo \
+    && echo '%sudo ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
+USER admin
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 RUN mkdir -p /root/.streamlit
+RUN chown admin /root/.streamlit
 RUN bash -c 'echo -e "\
 [general]\n\
 email = \"\"\n\
