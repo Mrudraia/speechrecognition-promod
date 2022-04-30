@@ -22,5 +22,4 @@ COPY new_requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 COPY . .
 
-ENTRYPOINT ["streamlit", "run", "app.py", "--server.enableCORS", "false", "--server.enableXsrfProtection", "false"]
-
+RUN streamlit run my_app.py --server.enableCORS=false --server.enableXsrfProtection=false
